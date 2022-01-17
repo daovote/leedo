@@ -1005,9 +1005,18 @@
                 $.ajax({
                     type: "Get",
                     url:'https://api.raritysniper.com/public/collection/squid-game-card/id/'+tokenId,
-                    cache: "false",
-                    headers: { 'Access-Control-Allow-Origin': '*'},
-                    crossDomain : true,
+                    contentType: 'application/json',
+                    dataType:'jsonp',
+                    responseType:'application/json',
+                    xhrFields: {
+                      withCredentials: false
+                    },
+                    headers: {
+                      'Access-Control-Allow-Credentials' : true,
+                      'Access-Control-Allow-Origin':'*',
+                      'Access-Control-Allow-Methods':'GET',
+                      'Access-Control-Allow-Headers':'application/json',
+                    },
                     success: function(data) {
                         alert("Cross Domain Call Success");
                         console.log(data);
