@@ -1001,15 +1001,22 @@
                 if(claim){
                     reward = 0;
                 }
-                $.ajax({ 
-                  url: "https://api.raritysniper.com/public/collection/squid-game-card/id/"+tokenId, 
-                  type: "GET", 
-                  dataType: "jsonp",
-                  jsonp: "callback",
-                  success: function(data){
-                    console.log(data)
-                  } 
-                })
+
+                $.ajax({
+                    type: "Get",
+                    url:'https://api.raritysniper.com/public/collection/squid-game-card/id/'+tokenId,
+                    cache: "false",
+                    headers: { 'Access-Control-Allow-Origin': '*'},
+                    crossDomain : true,
+                    success: function(data) {
+                        alert("Cross Domain Call Success");
+                        console.log(data);
+                    },
+                    error:function(error){
+                        alert("Error Response :", error);
+                        console.log(error);
+                    }
+                });
 
                 $("#reward").text(reward)
                 $("#claim").text(claim)
