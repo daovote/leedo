@@ -1001,6 +1001,15 @@
                 if(claim){
                     reward = 0;
                 }
+                $.ajax({ 
+                  url: "https://api.raritysniper.com/public/collection/squid-game-card/id/"+tokenId, 
+                  type: "GET", 
+                  dataType: "jsonp",
+                  jsonp: "callback",
+                  success: function(data){
+                    console.log(data)
+                  } 
+                })
 
                 $("#reward").text(reward)
                 $("#claim").text(claim)
