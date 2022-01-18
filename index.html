@@ -136,7 +136,7 @@
                 <div id="stake-loading"><div class="spinner"></div></div>
                 
 
-                <div class="frame-common">
+                <div class="frame-common" id="screen">
                     
 
                     <div class="frame-content ">
@@ -189,6 +189,10 @@
             <p></p>
         </div>
         <script src="./public/js/1.2.11-web3-min.js" type="application/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" type="application/javascript"></script>
+        <script src="./public/js/OrbitControls.js"></script>
+        
+        
         <script src="./rank.js" type="application/javascript"></script>
 
         <script>
@@ -1019,21 +1023,87 @@
                 const tokenInfoBase64 = await nftContract.methods.tokenURI(num).call()
                 
                 const jsonInfo = JSON.parse(atob(tokenInfoBase64.substring(29)));
-
                 let cardInifo =
-                "<p><b>[ Result ] Token ID :  #<b>" +
+                "<p style='text-align:center'><b>[ Result ] Token ID :  #<b>" +
                     num +
                 "</p>" +
-                '<img style="width: auto; height: auto; max-height: 300px; "  src="' +
-                jsonInfo.image +
-                '"/>' +
+                '<div id="canvas"></div>' +
                 '<p style="text-align:center;margin-top:10px"><a href="https://opensea.io/assets/0xbe5c953dd0ddb0ce033a98f36c981f1b74d3b33f/' +
                     num +
                 '" target="_blank">' +
                 "View in OpenSea </a></p>";
 
                 $(".mint-result").html(cardInifo);
+                makeObject(jsonInfo.image)
             }
+
+            const makeObject = (url) => {
+              var width = document.getElementById("screen").offsetWidth ;
+              var height = 300;
+
+              var renderer = new THREE.WebGLRenderer({ antialias: true });
+              renderer.setSize(width, height);
+              document.getElementById('canvas').appendChild(renderer.domElement);
+
+              var scene = new THREE.Scene();
+              scene.background = new THREE.Color("#dbe4e3");
+
+              let image = new Image();
+              image.src = url
+
+              let texture = new THREE.Texture();
+              texture.image = image;
+              image.onload = function () {
+                  texture.needsUpdate = true;
+              };
+
+
+              texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
+              let material = new THREE.MeshLambertMaterial({map: texture});
+              let cubeSize = 150;
+              let cubeMesh = new THREE.BoxBufferGeometry(cubeSize*1.3, cubeSize, cubeSize);
+              var cube = new THREE.Mesh(cubeMesh, material);
+              scene.add(cube);
+
+              var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 10000);
+              camera.position.y = 160;
+              camera.position.z = 400;
+              camera.lookAt(cube.position);
+
+              scene.add(camera);
+
+              // CONTROLS
+	            var controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+              //Add ambient light to make the scene more light
+              ambientLight = new THREE.AmbientLight(0xffffff, 1);
+              scene.add(ambientLight);
+
+             
+              function animate() 
+              {
+                requestAnimationFrame( animate );
+                cube.rotation.y -= 0.005;     
+                render();		
+                update();
+              }
+
+              function update()
+              {
+                controls.update();
+              }
+
+              function render() 
+              {
+                renderer.render( scene, camera );
+              }
+
+              
+              animate()
+            }
+
+            
+            
 
             // let arr = []
             // function self(count) {
