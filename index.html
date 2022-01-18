@@ -1061,7 +1061,7 @@
               texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
               let material = new THREE.MeshLambertMaterial({map: texture});
               let cubeSize = 150;
-              let cubeMesh = new THREE.BoxBufferGeometry(cubeSize*1.3, cubeSize, cubeSize);
+              let cubeMesh = new THREE.BoxBufferGeometry(cubeSize*1.5, cubeSize, cubeSize*0.05);
               var cube = new THREE.Mesh(cubeMesh, material);
               scene.add(cube);
 
