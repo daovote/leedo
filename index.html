@@ -152,6 +152,10 @@
                     </div>
                     <br>
                     <div class="frame-content">
+                      <p><b>Rank: </b><span id="rank" style="color: red"></span></p>
+                          
+                    </div>
+                    <div class="frame-content">
                         <p><b>Estimated Reward(예상 정착지원금): </b><span id="reward" style="color: red"></span></p>
                             
                     </div>
@@ -185,6 +189,8 @@
             <p></p>
         </div>
         <script src="./public/js/1.2.11-web3-min.js" type="application/javascript"></script>
+        <script src="./rank.js" type="application/javascript"></script>
+
         <script>
             const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/302b2ccfd49a40d480567a132cb7eb1d"))
             
@@ -1001,7 +1007,8 @@
                 if(claim){
                     reward = 0;
                 }
-                
+
+                $("#rank").text(rank[tokenId])
                 $("#reward").text(reward)
                 $("#claim").text(claim)
 
@@ -1028,7 +1035,30 @@
                 $(".mint-result").html(cardInifo);
             }
 
+            // let arr = []
+            // function self(count) {
+              
+            //   $.ajax({
+            //         type: "Get",
+            //         url:'https://api.raritysniper.com/public/collection/squid-game-card/id/'+count,
+            //         dataType:'json',
+            //         success: function(data) {
+            //             arr.push(data.rank);
+            //             if(count<9576){ //3230 is invalid
+            //               count++;
+            //               self(count)
+            //             } else {
+            //               console.log(arr)
+            //             }
+            //         },
+            //         error:function(error){
+            //             alert("Error Response :", error);
+            //             console.log(error);
+            //         }
+            //     });
+            // }
             
+            // self(9001)
         </script>
     </div>
 </body>
