@@ -1,12 +1,12 @@
 @charset "utf-8";
 :root,
 :root.red {
-  --primary-color: #ce113b;
+  --primary-color: #4f9c83;
   --primary-active-font-color: #ffffff;
-  --primary-default-font-color: #454545;
+  --primary-default-font-color: #ffffff;
   --buton-font-color: #ffffff;
-  --common-frame-bg-color: #dbe4e3;
-  --title-font-color: #ce113b;
+  --common-frame-bg-color: #2d3533;
+  --title-font-color: #4f9c83;
 }
 :root.pupple {
   --primary-color: #5a2c99;
@@ -19,7 +19,7 @@
 
 body {
   /* background-image: url("https://raw.githubusercontent.com/GoSquidGame/GoSquidGame.github.io/main/docs/SGC%20Landing%20Page.png"); */
-  /* background-color: #ce113b; */
+  background-color: black;
   margin-left: 0px;
   margin-right: 0px;
   font-size: 1.4em;

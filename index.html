@@ -8,7 +8,7 @@
     <meta name="keywords" content="오징어 게임 카드 오픈씨, 오징어 게임 카드 nft, 이도 토큰 용도, 이도 토큰 계획, 오징어 게임 카드 스테이킹, 이도 토큰, 이도 토큰 용도, squid game card nft, squid game metaverse nft, leedo erc20 token">
 
     <!-- Primary Meta Tags -->
-    <title>LEEDOSCAN</title>
+    <title>LEEDO NFT CHECKER</title>
     <meta name="title" content="Squid game card">
     <meta name="description" content="The squid game cards are invitation to enter the adventurous and mysterious metaverse games.">
 
@@ -86,45 +86,12 @@
     </div>
     <div id="content" class="content">  
         <div class="min600">
-            <h2 id="title"><span id="siteName">LEEDO CARD INFO</span> </h2>
-            <div class="social-btn-box">
-                <a href="https://discord.gg/xkTxRjjhVs" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="discord-logo-circle.png" />
-                </a>
-                <a href="https://opensea.io/collection/squid-game-card-nft" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="opensea-logo-circle.png" />
-                </a>
-                <a href="https://twitter.com/GoSquidGame" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="twitter-logo-circle.png" />
-                </a>
-                <a href="https://etherscan.io/address/0xbe5c953dd0ddb0ce033a98f36c981f1b74d3b33f" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="etherscan-logo-circle.png" />
-                </a>
-                <a href="https://github.com/GoSquidGame/GoSquidGame.github.io" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="github-logo.png" />
-                </a>
-                
-            </div>
+            <h2 id="title"><span id="siteName">LEEDO_NFT_CHECKER</span> </h2>
+            
         </div>
         <div class="max600">
-            <h2 id="title"><span id="siteName">LEEDO CARD INFO</span> </h2>
-            <div class="social-btn-box">
-                <a href="https://discord.gg/xkTxRjjhVs" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="discord-logo-circle.png" />
-                </a>
-                <a href="https://opensea.io/collection/squid-game-card-nft" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="opensea-logo-circle.png" />
-                </a>
-                <a href="https://twitter.com/GoSquidGame" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="twitter-logo-circle.png" />
-                </a>
-                <a href="https://etherscan.io/address/0xbe5c953dd0ddb0ce033a98f36c981f1b74d3b33f" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="etherscan-logo-circle.png" />
-                </a>
-                <a href="https://github.com/GoSquidGame/GoSquidGame.github.io" class="social-btn" target="_blank">
-                    <img width="40" height="40" src="github-logo.png" />
-                </a>
-            </div>
+            <h2 id="title"><span id="siteName">LEEDO_NFT_CHECKER</span> </h2>
+           
         </div>
         <div id="msgAlert" style="display: none;"></div>
 
@@ -139,12 +106,13 @@
                 <div class="frame-common" id="screen">
                     
 
-                    <div class="frame-content ">
+                    <div class="frame-content " >
 
                         <div>
-                            <input type="number" id="tokenId" placeholder="tokenId" style="display: block; border: 1px solid black;"/>
-                            <div class="add-token-link" onclick="getCardInfo()">
-                                <b>Get Card Info</b>
+                            <input type="number" id="tokenId" placeholder="Token ID" style="display: block; border: 1px solid black; color: aliceblue;"/>
+                            <div class="add-token-link" style= "border-radius: 8px; text-align: center; padding: 10px; font-size: large;"
+                            onclick="getCardInfo()">
+                                Get Card Info
                             </div>    
                         </div>
                         <div id="div-mint-result" class='mint-result'></div>
@@ -152,15 +120,17 @@
                     </div>
                     <br>
                     <div class="frame-content">
-                      <p><b>Rank: </b><span id="rank" style="color: red"></span></p>
+                      <p style="color: white">Rank: <span id="rank" style="color: #4f9c83"></span></p>
                           
                     </div>
+                    <br>
                     <div class="frame-content">
-                        <p><b>Estimated Reward(예상 정착지원금): </b><span id="reward" style="color: red"></span></p>
+                        <p style="color: white">Estimated Reward (예상 정착지원금): <span id="reward" style="color: #4f9c83"></span></p>
                             
                     </div>
+                    <br>
                     <div class="frame-content">
-                        <p><b>Claim(클레임 여부): </b><span id="claim" style="color: red"></span></p>
+                        <p style="color: white">Claim (클레임 여부): <span id="claim" style="color: #4f9c83"></span></p>
                             
                     </div>
                 </div>
@@ -1013,7 +983,7 @@
                 }
 
                 $("#rank").text(rank[tokenId])
-                $("#reward").text(reward)
+                $("#reward").text(reward + " LEEDO")
                 $("#claim").text(claim)
 
                 await getCardImage(tokenId)
@@ -1046,7 +1016,7 @@
               document.getElementById('canvas').appendChild(renderer.domElement);
 
               var scene = new THREE.Scene();
-              scene.background = new THREE.Color("#dbe4e3");
+              scene.background = new THREE.Color("#2d3533");
 
               let image = new Image();
               image.src = url
